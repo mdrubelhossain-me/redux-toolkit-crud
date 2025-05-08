@@ -5,9 +5,9 @@ const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container">
-        <a className="navbar-brand" href="#">
-          Navbar
-        </a>
+        <Link to="/" className="navbar-brand fw-bold">
+          CRUD-[Redux-toolkit]-React
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -24,6 +24,16 @@ const Navbar = () => {
             <li className="nav-item">
               <Link className="nav-link active" aria-current="page" to="/">
                 Home
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/add-book">
+                Add Book
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/books-view">
+                Books View
               </Link>
             </li>
           </ul>
