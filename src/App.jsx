@@ -6,7 +6,6 @@ import Index from './routes';
 const App = () => {
   return (
     <div>
-      <h1>Hello, World!</h1>
       <Index/>
     </div>
   );

@@ -1,14 +1,17 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "../pages/Home";
+import NotFound from "../pages/404";
+import Navbar from "../layouts/Navbar";
 
 const Index = () => {
   return (
     <div>
-      <h1>Welcome to the Index Page</h1>
       <BrowserRouter>
+      <Navbar/>
         <Routes>
-            <Route path="/" element={<h2>Home Page</h2>} />
-            <Route path="/about" element={<h2>About Page</h2>} />
+            <Route path="/" element={<Home/>} />
+            <Route path="*" element={<NotFound/>} />
         </Routes>
       </BrowserRouter>
     </div>
