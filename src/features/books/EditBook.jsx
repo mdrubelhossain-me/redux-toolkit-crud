@@ -4,27 +4,30 @@ import { updateBooks } from "./booksSlice"; // Adjust the path as needed
 import { useLocation, useNavigate } from "react-router-dom";
 
 const EditBook = () => {
-  const location = useLocation();
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const location = useLocation(); // Access location state passed from previous page
+  const dispatch = useDispatch(); // Initialize Redux dispatch
+  const navigate = useNavigate(); // For programmatic navigation
 
+  // Set up local state using values passed from location.state
   const [id] = useState(location.state.id);
   const [title, setTitle] = useState(location.state.title);
   const [author, setAuthor] = useState(location.state.author);
 
+  // Handle form submission
   const handleSubmit = (e) => {
-    e.preventDefault();
-    dispatch(updateBooks({ id, title, author }));
-    navigate("/books-view", { replace: true });
+    e.preventDefault(); // Prevent default form behavior
+    dispatch(updateBooks({ id, title, author })); // Dispatch update action
+    navigate("/books-view", { replace: true }); // Redirect back to books view
   };
 
   return (
     <div className="container py-5">
       <div className="col-md-6 mx-auto">
         <h2>Edit Book</h2>
-        {/* Add your form or content here */}
+        {/* Form to edit book details */}
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
+            {/* Input for book title */}
             <label htmlFor="title" class="form-label">
               Book Title
             </label>
@@ -40,6 +43,7 @@ const EditBook = () => {
             />
           </div>
           <div class="mb-3">
+            {/* Input for author name */}
             <label htmlFor="author" className="form-label">
               Author Name
             </label>
@@ -54,6 +58,7 @@ const EditBook = () => {
               required
             />
           </div>
+          {/* Submit button to trigger update */}
           <button type="submit" className="btn btn-primary">
             Update
           </button>

@@ -4,10 +4,12 @@ import { deleteBooks } from "./booksSlice"; // Adjust the path based on your pro
 import { Link } from "react-router-dom";
 
 const BooksView = () => {
+  // Get the list of books from the Redux store
   const books = useSelector((state) => state.booksReducer.books);
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch(); // Initialize Redux dispatch
 
+  // Function to handle book deletion by ID
   const handleDelete = (id) => {
     dispatch(deleteBooks(id));
   };
@@ -25,6 +27,7 @@ const BooksView = () => {
           </tr>
         </thead>
         <tbody>
+          {/* Check if books exist, then map through each book */}
           {books &&
             books.map((book) => {
               const { id, title, author } = book;
@@ -34,9 +37,15 @@ const BooksView = () => {
                   <td>{title}</td>
                   <td>{author}</td>
                   <td>
-                    <Link to="/edit-book" state={{id, title, author}} className="text-decoration-none">
+                    {/* Link to the edit page, passing book data via state */}
+                    <Link
+                      to="/edit-book"
+                      state={{ id, title, author }}
+                      className="text-decoration-none"
+                    >
                       <button className="btn btn-primary me-2">Edit</button>
                     </Link>
+                    {/* Delete button calls handleDelete function */}
                     <button
                       className="btn btn-danger"
                       onClick={() => {
